@@ -76,6 +76,13 @@ Artifacts claiming to be **Reusable** need to clear a significantly higher bar t
 * Does the artifact provide documented interfaces for extensions or is the artifact open source?
 * Can the artifact be used in a different environment (e.g., built on another system, used outside of the Docker or VM image, etc.)?
 
+# General Advice for Creating Artifacts
+
+1. **Start early.**  There are 10 days between CAV paper notification and the artifact submission deadline, which is not so much time.  We advise you to start preparing an artifact already before the paper notification date.  After all, if the paper is rejected from CAV'26, you will most probably want to resubmit it to a different conference, together with the same or a similar artifact.  Moreover, having a nicely structured artifact pays off in the long run, as you can use it as a basis for other artifacts in the future.
+1. **Users are not your beta testers.**  You should have a second person (other than the one(s) who prepared the artifact) to try to run it from the scratch, i.e., as the reviewers will run it, starting from its download and using the same instructions.  If issues are found and fixed, next time, try it again from the scratch, as other things could have broken.  Keep repeating until everything works.  If you do not have a second person, do it yourself, but start from scratch.
+1. **Time is dear.**  Please provide an estimate how long each non-trivial step in the instructions takes, so that reviewers can use it for planning (e.g., longer steps can be run overnight).  Provide *progress indicators* (e.g. `now running task 42/1337`). If it takes your artifact a long time (e.g. several days or weeks) to reproduce the results in the paper (there is nothing wrong about it *per se*), please provide an option to reproduce a representative subset of the results that can be run in about 8 hours on a laptop.
+
+
 # Contact
 
 For any questions regarding Artifact Evaluation, please [contact the AE chairs](mailto:lengal@fit.vutbr.cz;myreen@chalmers.se?subject=[CAV'26%20AE] FILL IN SUBJECT):
