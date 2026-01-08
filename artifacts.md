@@ -3,6 +3,8 @@ layout: page
 title: Artifact Evaluation
 ---
 
+**Self-Nominations**: We are looking for artifact reviewers!  If you are interested to serve on the CAV 2026 Artifact Evaluation Committee, please fill in [the form](https://forms.gle/N49xuaofDk1JtkBDA).
+
 CAV allows authors of accepted papers to submit paper artifacts to strengthen confidence in validity of the claims in the papers, in reproducibility of the obtained results, and in usability of the developed tools by other researchers. **New in CAV 2026**: artifact submission is not required for papers of any category, it is, however, encouraged for papers of all categories, especially for (short) tool papers. Results of artifact evaluation do not affect paper decisions. We note that during submission of a paper, authors will be required to indicate whether they plan to submit an artifact in the case their paper is accepted.
 
 # Important Dates
@@ -14,7 +16,7 @@ All deadlines are AoE (Anywhere on Earth).
 * Smoke test phase: April 28–May 3, 2026
 * Artifact revision period: May 4–May 8, 2026
 * Full review period; May 9–May 24, 2026
-* Artifact notification: Friday, May 29, 2026
+* Artifact notification: May 29, 2026
 
 # Submission Site
 
@@ -36,17 +38,102 @@ In the **smoke test** phase, reviewers will download artifacts, read the artifac
 
 In the **full review** phase, reviewers will evaluate artifacts according to the [evaluation criteria](#evaluation-criteria) with respect to the claims in the papers and decide on the badge(s) awarded to each submission. At this stage, there may be a continuous discussion between the authors and the reviewers if necessary.
 
+Unless the artifact is provided publicly (e.g., on Zenodo, figshare, Dryad), it is considered *confidential* to the CAV 2026 Artifact Evaluation. Reviewers are asked to use the artifact only as permitted by its license.
+
 # Submission Guidelines
 
-**TODO**
+A final artifact submission consists of the following items (these are to be filled in and uploaded at the submission page):
+
+* **ID and Title** of the CAV'26 accepted paper.
+* **Paper Abstract**: Abstract of the paper accepted at CAV'26.
+* **Paper PDF**: the PDF of the paper accepted at CAV'26.
+* **URL**  at which the artifact package .zip file can be downloaded; if you are applying for the **Available** badge, this should be a DOI link.  For preserving reviewer anonymity, you will be required to confirm that the authors of the paper cannot track users accessing the URL. 
+* **SHA256** checksum of the .zip artifact package; on the most popular operating systems, this can be obtained, e.g., by the following command line commands:
+ * Linux: `sha256sum <file>`
+ * Windows: `CertUtil -hashfile <file> SHA256`
+ * MacOS: `shasum -a 256 <file>`
+* **Type of Artifact**:
+ * *virtual machine* image or *Docker* image
+ * architecture for which the artifact is intended: `x86_64` (Intel) or `arm64` (Apple Silicon)
+ * in the case your artifact does not fit in these categories, please contact the AE chairs as soon as possible
+* **External Connectivity**: Please indicate if your artifact requires external connectivity and describe the reasons why.
+* **Requested Badges**: Badges that you are applying for.
 
 # Packaging Guidelines
 
+Your artifact .zip file must contain the following elements:
+
+* **image** or **package contents**:
+  * either a VM or a Docker *image*
+  * or a *package* to be downloaded on some standard VM/Docker image <font color="blue">with a DOI; does it make sense to consider a "standard" Docker image?</font> (in that case, the contents can be directly in the artifact .zip file)
+* `README` file: see [below](#readme-file-structure) for recommended structure
+* `LICENSE` file: the license needs to allow running/examining the artifact within the CAV 2026 Artifact Evaluation.
+
+If you are not able to prepare the artifact as above, please contact AE chairs early for an alternative arrangement. An example of such a situation is when you cannot provide a VM or Docker image that contains licensed software (e.g., MATLAB) or similar (also see [below](#general-advice-for-creating-artifacts) for suggestions).
+
+
+or image link plus package
+
+
+
+
+
+
+## README file structure
+
+Describe which steps require external connectivity and why.
+
 **TODO**
+
+
+
+## Examples of the structure of a .zip file with an artifact:
+
+1. VM image
+
+    ```
+    artifact
+    ├── image.ova
+    ├── LICENSE.txt
+    └── README.md
+    ```
+
+1. Docker image
+
+    ```
+    artifact
+    ├── image.tar.gz
+    ├── LICENSE
+    └── README
+    ```
+
+1. package
+
+    ```
+    artifact
+    ├── deb-packages
+    │   ├── autoconf_2.72-3ubuntu1_all.deb
+    │   ├ ...
+    │   └── openmpi-common_5.0.7-1_all.deb
+    ├── install.sh
+    ├── LICENSE
+    ├── pip-packages
+    │   ├── asttokens-3.0.0-py3-none-any.whl
+    │   ├ ...
+    │   └── wcwidth-0.2.14-py2.py3-none-any.whl
+    ├── README.txt
+    ├── run-all.sh
+    ├── run-smoke.sh
+    └── tool
+        ├── CMakeLists.txt
+        ├ ...
+        └── README.md 
+    ```
+
 
 # Evaluation Criteria
 
-Reviewers will read the paper and run the artifact to evaluate how well the artifact supports the claims and results of the paper.  The criteria for awarding badges follow the [ACM artifact criteria](https://www.acm.org/publications/policies/artifact-review-and-badging-current) with several refinements:
+Reviewers will read the paper and run the artifact to evaluate how well the artifact supports the claims and results of the paper.  The criteria for awarding badges follow the [ACM artifact criteria](https://www.acm.org/publications/policies/artifact-review-and-badging-current) (**if you are not familiar with them, please read them carefully before you proceed**) with several refinements:
 
 ## Available badge
 To be **Available**, an artifact needs satisfy the following requirements:
@@ -82,9 +169,9 @@ Artifacts claiming to be **Reusable** need to clear a significantly higher bar t
 1. **Users are not your beta testers.**  You should have a second person (other than the one(s) who prepared the artifact) to try to run it from the scratch, i.e., as the reviewers will run it, starting from its download and using the same instructions.  If issues are found and fixed, next time, try it again from the scratch, as other things could have broken.  Keep repeating until everything works.  If you do not have a second person, do it yourself, but start from scratch.
 1. **Keep it simple, stupid.**  The provided instructions should allow the results to be reproduced by any computer science graduate with a working knowledge of the command line.  Do not assume any expertise in your field.  If appropriate, provide toy examples and instructions on how to use them.  Do not assume the user is a Docker expert—if you are submitting a Docker artifact, give step-by-step instructions on how to set it up. 
 1. **Be clear.**  Be clear about how the outputs obtained using the artifact map to the results in the paper (e.g. "After the scripts finishes, the graph in `figs/results-Fig1.pdf` should match the graph in Fig. 1 in the paper").
-1. **Time is dear.**  Please provide an estimate how long each non-trivial step in the instructions takes, so that reviewers can use it for planning (e.g., longer steps can be run overnight).  Provide *progress indicators* (e.g. `now running task 42/1337`). If it takes your artifact a long time (e.g. several days or weeks) to reproduce the results in the paper (there is nothing wrong about it *per se*), please provide an option to reproduce a representative subset of the results that can be run in about 8 hours on a laptop.
-1. **Make it all replicable.**  XXXXXXX
-1. **Make it standalone.**  Avoid connecting to external services as much as possible.
+1. **Time is dear.**  Please provide an estimate how long each non-trivial step in the instructions takes, so that reviewers can use it for planning (e.g., longer steps can be run overnight).  Provide *progress indicators* (e.g. `running task 42/1337`). If it takes your artifact a long time (e.g. several days or weeks) to reproduce the results in the paper (there is nothing wrong about it *per se*), please provide an option to reproduce a representative subset of the results that can be run in about 8 hours on a laptop.
+1. **Make it all replicable.**  While submitting a VM/Docker image with a binary of your tool, one script, and the benchmarks is possible and sufficient to satisfy the formal requirements for the **Functional** badge, this will not make your artifact easy to use (and certainly will not qualify for the **Reusable** badge).  Instead, having a package (e.g., in the form of a .zip file containing a git repository) that one can download on a standard VM/Docker image (**EXAMPLES / PREPARE CAV VM/Docker images???**) and setup there makes your artifact more user-friendly and reusable.  Note that this may require also bundling, e.g., `.deb` files and `pip` packages with your artifact (see, e.g., [here](https://zenodo.org/records/2759473) for guidelines on how to prepare such a package). 
+1. **Make it standalone.**  Avoid connecting to external services as much as possible.  For instance, include required packages to avoid installing from the Internet (web services can move/terminate over time, packages can be removed, API endpoints can change, free services can become paid).  See the above note on **Completeness** in the [Functional badge](#functional-badge) section for ideas on how to deal with the situation if external services are required for your artifact.
 
 
 # Contact
