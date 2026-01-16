@@ -65,27 +65,18 @@ Your artifact .zip file must contain the following elements:
 
 * **image** or **package contents**:
   * either a VM or a Docker *image*
-  * or a *package* to be downloaded on some standard VM/Docker image <font color="blue">with a DOI; does it make sense to consider a "standard" Docker image?</font> (in that case, the contents can be directly in the artifact .zip file)
+  * or a *package* to be downloaded on some standard VM image with a DOI (in that case, the contents can be directly in the artifact .zip file).  The DOI of the VM image should then be on the web page of the artifact and also in the `README` file.
 * `README` file: see [below](#readme-file-structure) for recommended structure
 * `LICENSE` file: the license needs to allow running/examining the artifact within the CAV 2026 Artifact Evaluation.
 
 If you are not able to prepare the artifact as above, please contact AE chairs early for an alternative arrangement. An example of such a situation is when you cannot provide a VM or Docker image that contains licensed software (e.g., MATLAB) or similar (also see [below](#general-advice-for-creating-artifacts) for suggestions).
 
 
-or image link plus package
-
-
-
-
-
-
 ## README file structure
 
-Describe which steps require external connectivity and why.
+**Details will appear here later**
 
-**TODO**
-
-
+<!-- Describe which steps require external connectivity and why. -->
 
 ## Examples of the structure of a .zip file with an artifact:
 
@@ -138,7 +129,7 @@ Reviewers will read the paper and run the artifact to evaluate how well the arti
 ## Available badge
 To be **Available**, an artifact needs satisfy the following requirements:
 
-1. Have a **DOI**.  Please upload the artifact to a repository that provides a DOI, such as [Zenodo](http://zenodo.org/), [figshare](https://figshare.com/), or [Dryad](https://datadryad.org/) and use this DOI link in your artifact submission.  If the repository also provides a *Concept DOI* (a DOI that automatically resolves to the latest version of the artifact), do not provide it; instead, provide the DOI for the specific submitted version.  
+1. Have a **DOI**.  Please upload the artifact to a repository that provides a DOI, such as [Zenodo](http://zenodo.org/), [figshare](https://figshare.com/), or [Dryad](https://datadryad.org/) and use this DOI link in your artifact submission.  If the repository also provides a *Concept DOI* (a DOI that automatically resolves to the latest version of the artifact), do not provide it; instead, provide the DOI for the specific submitted version.  In case you are submitting a *package* artifact, the DOI of the basic VM image should be given on the web page with the artifact.
 1. Have a **license** that allows running/examining the artifact within and outside of CAV 2026 Artifact Evaluation.  This does not necessitate, e.g., to allow running the artifact on different benchmarks than the provided ones, allowing modifications of the artifact, etc.
 
 ## Functional badge
@@ -170,7 +161,7 @@ Artifacts claiming to be **Reusable** need to clear a significantly higher bar t
 1. **Keep it simple, stupid.**  The provided instructions should allow the results to be reproduced by any computer science graduate with a working knowledge of the command line.  Do not assume any expertise in your field.  If appropriate, provide toy examples and instructions on how to use them.  Do not assume the user is a Docker expert—if you are submitting a Docker artifact, give step-by-step instructions on how to set it up. 
 1. **Be clear.**  Be clear about how the outputs obtained using the artifact map to the results in the paper (e.g. "After the scripts finishes, the graph in `figs/results-Fig1.pdf` should match the graph in Fig. 1 in the paper").
 1. **Time is dear.**  Please provide an estimate how long each non-trivial step in the instructions takes, so that reviewers can use it for planning (e.g., longer steps can be run overnight).  Provide *progress indicators* (e.g. `running task 42/1337`). If it takes your artifact a long time (e.g. several days or weeks) to reproduce the results in the paper (there is nothing wrong about it *per se*), please provide an option to reproduce a representative subset of the results that can be run in about 8 hours on a laptop.
-1. **Make it all replicable.**  While submitting a VM/Docker image with a binary of your tool, one script, and the benchmarks is possible and sufficient to satisfy the formal requirements for the **Functional** badge, this will not make your artifact easy to use (and certainly will not qualify for the **Reusable** badge).  Instead, having a package (e.g., in the form of a .zip file containing a git repository) that one can download on a standard VM/Docker image (**EXAMPLES / PREPARE CAV VM/Docker images???**) and setup there makes your artifact more user-friendly and reusable.  Note that this may require also bundling, e.g., `.deb` files and `pip` packages with your artifact (see, e.g., [here](https://zenodo.org/records/2759473) for guidelines on how to prepare such a package). 
+1. **Make it all replicable.**  While submitting a VM/Docker image with a binary of your tool, one script, and the benchmarks is possible and sufficient to satisfy the formal requirements for the **Functional** badge, this will not make your artifact easy to use (and certainly will not qualify for the **Reusable** badge).  Instead, having a package (e.g., in the form of a .zip file containing a git repository) that one can download on some standard VM image and setup there makes your artifact more user-friendly and reusable.  Note that this may require also bundling, e.g., `.deb` files and `pip` packages with your artifact (see, e.g., [here](https://zenodo.org/records/2759473) for guidelines on how to prepare such a package). 
 1. **Make it standalone.**  Avoid connecting to external services as much as possible.  For instance, include required packages to avoid installing from the Internet (web services can move/terminate over time, packages can be removed, API endpoints can change, free services can become paid).  See the above note on **Completeness** in the [Functional badge](#functional-badge) section for ideas on how to deal with the situation if external services are required for your artifact.
 
 
@@ -178,13 +169,5 @@ Artifacts claiming to be **Reusable** need to clear a significantly higher bar t
 
 For any questions regarding Artifact Evaluation, please [contact the AE chairs](mailto:lengal@fit.vutbr.cz;myreen@chalmers.se?subject=[CAV'26%20AE] FILL IN SUBJECT):
 
-* [Ondřej Lengál](https://www.fit.vut.cz/person/lengal/), Brno University of Technology
-* [Magnus Myreen](https://www.cse.chalmers.se/~myreen/), Chalmers
-
-
-
-**\#\#END\#\#**
-
-
-
-Members of the artifact evaluation committee and the program committee are asked to use submitted artifacts for the sole purpose of evaluating the contribution associated with the artifact.
+* [Ondřej Lengál](https://www.fit.vut.cz/person/lengal/), Brno University of Technology, Czech Republic
+* [Magnus Myreen](https://www.cse.chalmers.se/~myreen/), Chalmers, Sweden
