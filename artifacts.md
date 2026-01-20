@@ -49,13 +49,13 @@ A final artifact submission consists of the following items (these are to be fil
 * **Paper PDF**: the PDF of the paper accepted at CAV'26.
 * **URL**  at which the artifact package .zip file can be downloaded; if you are applying for the **Available** badge, this should be a DOI link.  For preserving reviewer anonymity, you will be required to confirm that the authors of the paper cannot track users accessing the URL. 
 * **SHA256** checksum of the .zip artifact package; on the most popular operating systems, this can be obtained, e.g., by the following command line commands:
- * Linux: `sha256sum <file>`
- * Windows: `CertUtil -hashfile <file> SHA256`
- * MacOS: `shasum -a 256 <file>`
+  * Linux: `sha256sum <file>`
+  * Windows: `CertUtil -hashfile <file> SHA256`
+  * MacOS: `shasum -a 256 <file>`
 * **Type of Artifact**:
- * *virtual machine* image or *Docker* image
- * architecture for which the artifact is intended: `x86_64` (Intel) or `arm64` (Apple Silicon)
- * in the case your artifact does not fit in these categories, please contact the AE chairs as soon as possible
+  * *virtual machine* image or *Docker* image
+  * architecture for which the artifact is intended: `x86_64` (Intel) or `arm64` (Apple Silicon)
+  * in the case your artifact does not fit in these categories, please contact the AE chairs as soon as possible
 * **External Connectivity**: Please indicate if your artifact requires external connectivity and describe the reasons why.
 * **Requested Badges**: Badges that you are applying for.
 
